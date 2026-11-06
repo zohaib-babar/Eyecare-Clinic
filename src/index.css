@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-600 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-normal tracking-tight text-navy-900;
+  }
+
+  ::selection {
+    background: #3fd0e3;
+    color: #050f26;
+  }
+}
+
+@layer components {
+  /* Centered page width with responsive side padding */
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Vertical spacing between page sections */
+  .section-y {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  /* Frosted glass panel used on dark backgrounds */
+  .glass {
+    @apply border border-white/15 bg-white/10 backdrop-blur-md;
+  }
+
+  /* Subtle grid texture for dark sections */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* Content that slides up over the dark page header with a rounded top edge */
+  .page-body {
+    @apply relative -mt-12 rounded-t-[2.5rem] bg-white md:-mt-16 md:rounded-t-[3.5rem];
+  }
+
+  /* Form inputs */
+  .field {
+    @apply w-full rounded-xl border border-navy-900/15 bg-white px-4 py-3.5 text-navy-900
+      placeholder:text-slate-400 transition duration-300
+      focus:border-aqua-500 focus:outline-none focus:ring-4 focus:ring-aqua-400/20;
+  }
+}
+
+/* Respect visitors who ask their device for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
